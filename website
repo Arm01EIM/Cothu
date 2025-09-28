@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cothú — Nourishment, Smoothies & Wellness Shots</title>
+  <meta name="description" content="Cothú is a wellness kitchen serving smoothies, health shots, and nourishing bowls. Rooted in Ireland. Real ingredients, real nutrition." />
+  <meta name="theme-color" content="#ffffff" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Cothú — Nourishment, Smoothies & Wellness Shots" />
+  <meta property="og:description" content="Wellness smoothies, health shots, and wholesome bowls. Rooted in Ireland." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/og-image.jpg" />
+  <meta property="og:url" content="https://example.com" />
+  
+  <style>
+    /* White background, pastel accents, sharp clean look */
+    :root{
+      --bg:#ffffff;       /* overall background */
+      --fg:#1a1a1a;       /* main text */
+      --muted:#6b7280;    /* muted text */
+      --brand:#a3b18a;    /* sage green pastel */
+      --brand-2:#e9f5ee;  /* very light pastel green */
+      --card:#ffffff;     /* white cards */
+      --border:#e5e7eb;   /* neutral border */
+      --accent:#f9fafb;   /* subtle off-white */
+    }
+
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial;}
+    a{color:var(--brand);text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    .container{max-width:1120px;margin:0 auto;padding:0 20px}
+
+    header{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--border)}
+    .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+    .brand{display:flex;align-items:center;gap:.6rem;font-weight:800}
+    .logo{width:28px;height:28px;border-radius:6px;background:var(--brand);display:inline-block}
+
+    .nav a{margin-left:18px;font-weight:600;color:var(--fg)}
+    .nav a.cta{background:var(--brand);color:#fff;padding:.55rem .9rem;border-radius:8px}
+    .mobile-toggle{display:none;background:none;border:none;font-size:1.25rem}
+    @media (max-width:840px){
+      .nav-links{display:none}
+      .mobile-toggle{display:block}
+      .nav.open .nav-links{display:flex;flex-direction:column;gap:.6rem;position:absolute;left:0;right:0;top:68px;background:var(--bg);border-bottom:1px solid var(--border);padding:12px 20px}
+      .nav a{margin-left:0}
+    }
+
+    .hero{padding:80px 0 44px;background:var(--bg)}
+    .hero h1{font-size:clamp(30px,6vw,56px);line-height:1.05;margin:.2em 0}
+    .badge{display:inline-flex;gap:.4rem;align-items:center;background:var(--brand-2);border:1px solid var(--border);padding:.35rem .65rem;border-radius:999px;font-weight:600;color:var(--muted)}
+
+    .grid{display:grid;gap:22px}
+    @media (min-width:840px){.grid-2{grid-template-columns:1.2fr .8fr}}
+
+    .card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px}
+    .pill{background:var(--brand);color:#fff;padding:.2rem .55rem;border-radius:999px;font-size:.82rem}
+
+    .section{padding:60px 0}
+    h2{font-size:clamp(22px,4vw,34px);margin:.2em 0 .35em}
+    .sub{color:var(--muted)}
+
+    .menu-tabs{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 18px}
+    .tab{border:1px solid var(--border);background:#fff;padding:.48rem .85rem;border-radius:8px;cursor:pointer}
+    .tab.active{background:var(--brand);color:#fff;border-color:transparent}
+
+    .chips{display:flex;gap:6px;flex-wrap:wrap}
+    .chip{font-size:.8rem;background:var(--brand-2);border:1px solid var(--border);padding:.18rem .5rem;border-radius:999px;color:#475a4a}
+
+    .menu-grid{display:grid;gap:14px}
+    @media (min-width:700px){.menu-grid{grid-template-columns:repeat(3,1fr)}}
+    .item{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:8px}
+
+    .row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+    .kicker{font-weight:700;color:var(--brand);text-transform:uppercase;letter-spacing:.1em;font-size:.8rem}
+
+    .split{display:grid;gap:18px}
+    @media (min-width:900px){.split{grid-template-columns:1fr 1fr}}
+
+    .faq details{background:#fff;border:1px solid var(--border);border-radius:8px;padding:12px}
+    .faq summary{cursor:pointer;font-weight:700}
+
+    footer{padding:34px 0;border-top:1px solid var(--border);color:var(--muted)}
+
+    dialog{border:none;border-radius:8px;padding:0;max-width:560px;width:96vw}
+    dialog::backdrop{background:rgba(0,0,0,.25)}
+    .modal{padding:16px}
+    .modal header{position:sticky;top:0;background:var(--card);border-bottom:1px solid var(--border)}
+    .close{background:none;border:none;font-size:1.4rem;line-height:1}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav" id="nav">
+      <div class="brand"><span class="logo" aria-hidden="true"></span><span>Cothú</span></div>
+      <button class="mobile-toggle" aria-label="Toggle navigation" onclick="document.getElementById('nav').classList.toggle('open')">☰</button>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#menu">Menu</a>
+        <a href="#nutrition">Nutrition</a>
+        <a href="#about">About</a>
+        <a href="#visit" class="cta">Visit / Order</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container grid grid-2">
+        <div>
+          <div class="badge" aria-label="Irish wellness brand"><span>🇮🇪</span><span>Rooted in Ireland</span></div>
+          <h1>Nourishment, the Irish way.</h1>
+          <p class="sub">Cothú crafts wellness smoothies, health shots, and (soon) wholesome bowls — powered by real ingredients and transparent nutrition.</p>
+          <div class="row" style="margin-top:14px">
+            <a class="cta" href="#menu" style="background:var(--brand);color:#fff;padding:.7rem 1rem;border-radius:10px;font-weight:700">See Menu</a>
+            <a class="cta" href="#visit" style="background:var(--card);color:var(--fg);border:1px solid var(--border);padding:.7rem 1rem;border-radius:10px;font-weight:700">Visit / Order</a>
+          </div>
+        </div>
+        <div class="card">
+          <p class="kicker">This week’s special</p>
+          <h3 style="margin:.2em 0">Emerald Glow Smoothie <span class="pill" aria-label="vegan">Vegan</span></h3>
+          <p class="sub">Spinach, mango, pineapple, mint, lime, chia — 18g plant protein.</p>
+          <div class="chips" aria-label="key nutrients"><span class="chip">Vit C</span><span class="chip">Iron</span><span class="chip">Omega-3</span></div>
+          <div class="row" style="margin-top:10px"><span class="price">€6.50</span><button class="tab" onclick="openNutrition('Emerald Glow','Vitamin C, Iron, ALA Omega-3, Fibre','190kcal')">Nutrition</button></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container" id="menu">
+      <h2>Menu</h2>
+      <p class="sub">Smoothies & wellness shots available now. Bowls and take-home meals coming soon.</p>
+      <div class="menu-tabs" role="tablist" aria-label="Menu categories">
+        <button class="tab active" role="tab" aria-selected="true" onclick="switchTab('smoothies', this)">Smoothies</button>
+        <button class="tab" role="tab" aria-selected="false" onclick="switchTab('shots', this)">Health Shots</button>
+        <button class="tab" role="tab" aria-selected="false" onclick="switchTab('bowls', this)">Bowls (Soon)</button>
+      </div>
+
+      <div id="smoothies" class="menu-grid" role="tabpanel">
+        <article class="item">
+          <div class="row"><h3>Emerald Glow</h3><span class="price">€6.50</span></div>
+          <p class="sub">Spinach, mango, pineapple, mint, lime, chia, plant protein.</p>
+          <div class="chips"><span class="chip">Vit C</span><span class="chip">Iron</span><span class="chip">Fibre</span></div>
+          <div class="row"><button class="tab" onclick="openNutrition('Emerald Glow','Vitamin C, Iron, ALA Omega-3, Fibre','190kcal')">Nutrition</button><span class="pill">Vegan</span></div>
+        </article>
+        <article class="item">
+          <div class="row"><h3>Berry Bright</h3><span class="price">€6.90</span></div>
+          <p class="sub">Strawberry, blueberry, banana, oats, flax, yogurt.</p>
+          <div class="chips"><span class="chip">Polyphenols</span><span class="chip">Fibre</span></div>
+          <div class="row"><button class="tab" onclick="openNutrition('Berry Bright','Vitamin C, Manganese, Fibre, Probiotics','230kcal')">Nutrition</button><span class="pill">Vegetarian</span></div>
+        </article>
+        <article class="item">
+          <div class="row"><h3>Protein Green</h3><span class="price">€7.50</span></div>
+          <p class="sub">Kale, banana, almond butter, pea protein, dates, oat milk.</p>
+          <div class="chips"><span class="chip">Protein</span><span class="chip">Vit K</span><span class="chip">Magnesium</span></div>
+          <div class="row"><button class="tab" onclick="openNutrition('Protein Green','Protein, Vitamin K, Magnesium, Fibre','320kcal')">Nutrition</button><span class="pill">GF</span></div>
+        </article>
+      </div>
+
+      <div id="shots" class="menu-grid" role="tabpanel" hidden>
+        <article class="item">
+          <div class="row"><h3>Fire Ginger</h3><span class="price">€3.00</span></div>
+          <p class="sub">Ginger, lemon, honey, cayenne.</p>
+          <div class="chips"><span class="chip">Vit C</span><span class="chip">Gingerols</span></div>
+          <div class="row"><button class="tab" onclick="openNutrition('Fire Ginger','Vitamin C, Gingerols','22kcal')">Nutrition</button></div>
+        </article>
+        <article class="item">
+          <div class="row"><h3>Green Zing</h3><span class="price">€3.20</span></div>
+          <p class="sub">Wheatgrass, apple, lime.</p>
+          <div class="chips"><span class="chip">Chlorophyll</span><span class="chip">Vit A</span></div>
+          <div class="row"><button class="tab" onclick="openNutrition('Green Zing','Vitamin A, Chlorophyll','18kcal')">Nutrition</button></div>
+        </article>
+      </div>
+
+      <div id="bowls" class="menu-grid" role="tabpanel" hidden>
+        <article class="item">
+          <div class="row"><h3>Coming soon</h3></div>
+          <p class="sub">Wholesome salad bowls and take-home meals are on the way. Sign up below to be first to know.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section container" id="nutrition">
+      <h2>Transparent Nutrition</h2>
+      <p class="sub">We highlight vitamins, minerals and macros for every item — so you know exactly what you’re nourishing.</p>
+      <div class="split">
+        <div class="card">
+          <p class="kicker">Sample label</p>
+          <ul>
+            <li><strong>Calories:</strong> 230 kcal</li>
+            <li><strong>Protein:</strong> 18 g</li>
+            <li><strong>Fibre:</strong> 7 g</li>
+            <li><strong>Key micronutrients:</strong> Vitamin C, Iron, Magnesium</li>
+          </ul>
+          <p class="sub">Values may vary by seasonal produce. Ask in-store for exact batches.</p>
+        </div>
+        <div class="card">
+          <p class="kicker">Allergens</p>
+          <p class="sub">We can prepare most items <strong>gluten-free</strong> and <strong>dairy-free</strong>. Please inform staff of any allergies. Traces of nuts may be present.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container" id="about">
+      <h2>About Cothú</h2>
+      <p class="sub">“Cothú” means <em>nourishment</em> in Irish. We’re a small Irish team making fresh, functional food that tastes great and does good. Smoothies and shots now; bowls and take-home meals next.</p>
+      <div class="split">
+        <div class="card">
+          <p class="kicker">Sourcing</p>
+          <p>We prioritise Irish suppliers, seasonal fruit & veg, and high-quality proteins. Our packaging is recyclable or compostable where possible.</p>
+        </div>
+        <div class="card">
+          <p class="kicker">Sustainability</p>
+          <p>We reduce waste through small-batch prep and upcycle surplus into staff meals and donations.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container" id="visit">
+      <h2>Visit / Order</h2>
+      <div class="split">
+        <div class="card">
+          <p class="kicker">Location</p>
+          <p><strong>Cothú</strong><br/>Your Street, Your Town, Co. Your County</p>
+          <p><strong>Hours</strong><br/>Mon–Fri: 8:00–16:00<br/>Sat: 9:00–15:00<br/>Sun: Closed</p>
+          <p><a href="https://maps.google.com" target="_blank" rel="noopener">Open in Google Maps ↗</a></p>
+        </div>
+        <div class="card">
+          <p class="kicker">Pre-order</p>
+          <p>Ring us or email your order and we’ll have it ready for pickup.</p>
+          <p><a href="tel:+3530000000">+353 00 000 0000</a><br/>
+          <a href="mailto:hello@cothu.ie?subject=Order%20Enquiry">hello@cothu.ie</a></p>
+          <form action="mailto:hello@cothu.ie" method="post" enctype="text/plain" onsubmit="alert('This will open your email app to send the order.');">
+            <label for="msg">Quick message</label><br/>
+            <textarea id="msg" name="message" rows="4" style="width:100%" placeholder="Hi Cothú, I’d like to pre-order…"></textarea>
+            <div class="row" style="margin-top:8px"><button class="tab" type="submit">Send</button></div>
+          </form>
+        </div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <p class="kicker">Newsletter</p>
+        <p class="sub">No subscriptions needed — we use a simple email list. Pop us a note and we’ll add you.</p>
+      </div>
+    </section>
+
+    <section class="section container faq" id="faq">
+      <h2>FAQ</h2>
+      <details>
+        <summary>Do I need an app or subscription to order?</summary>
+        <p>Nope! Call or email and we’ll sort it. We’re keeping it simple and accessible.</p>
+      </details>
+      <details>
+        <summary>Do you publish macros and micronutrients?</summary>
+        <p>Yes — each item lists key vitamins/minerals and macros. Tap “Nutrition” on any item.</p>
+      </details>
+      <details>
+        <summary>Are you vegan / gluten-free friendly?</summary>
+        <p>Absolutely. Many items are vegan or gluten-free by default; we’ll flag allergens clearly.</p>
+      </details>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© <span id="year"></span> Cothú. All rights reserved. • <a href="#">Instagram</a> • <a href="#">Facebook</a></p>
+    </div>
+  </footer>
+
+  <dialog id="nutriModal">
+    <div class="modal">
+      <header class="row" style="justify-content:space-between;align-items:center;padding:10px 16px">
+        <strong id="nutriTitle">Nutrition</strong>
+        <button class="close" onclick="closeNutrition()" aria-label="Close">×</button>
+      </header>
+      <div style="padding:16px">
+        <p><strong>Highlights:</strong> <span id="nutriHighlights"></span></p>
+        <p><strong>Energy:</strong> <span id="nutriCals"></span></p>
+        <p class="sub">*Informational only. Actual values vary by ingredients and batch.</p>
+      </div>
+    </div>
+  </dialog>
+
+  <script>
+    // mobile nav
+    document.addEventListener('click', (e)=>{
+      const nav = document.getElementById('nav');
+      if(nav.classList.contains('open')){
+        const inside = nav.contains(e.target);
+        if(!inside) nav.classList.remove('open');
+      }
+    });
+    // tabs
+    function switchTab(id, btn){
+      document.querySelectorAll('[role=tabpanel]').forEach(el=>el.hidden=true);
+      document.getElementById(id).hidden=false;
+      document.querySelectorAll('.menu-tabs .tab').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+    }
+    // nutrition modal
+    function openNutrition(name, highlights, cals){
+      document.getElementById('nutriTitle').textContent = name + ' — Nutrition';
+      document.getElementById('nutriHighlights').textContent = highlights;
+      document.getElementById('nutriCals').textContent = cals;
+      document.getElementById('nutriModal').showModal();
+    }
+    function closeNutrition(){
+      document.getElementById('nutriModal').close();
+    }
+    // year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
